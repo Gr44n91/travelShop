@@ -2,10 +2,7 @@ package com.debuggeando_ideas.best_travel.domain.entities;
 
 import com.debuggeando_ideas.best_travel.util.AeroLine;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 import org.springframework.jdbc.core.CallableStatementCallback;
 
@@ -39,6 +36,8 @@ public class FlyEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private AeroLine aeroLine;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(
             cascade = CascadeType.ALL, //Opciones de borrado
             fetch = FetchType.EAGER, //Opciones de recuperar objeto EAGER con joins de tickets

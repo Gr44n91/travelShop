@@ -1,10 +1,7 @@
 package com.debuggeando_ideas.best_travel.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -24,6 +21,8 @@ public class TourEntity implements Serializable {
     @JoinColumn(name = "id_customer")
     private CustomerEntity customer;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER,
@@ -32,6 +31,8 @@ public class TourEntity implements Serializable {
     )
     private Set<TicketEntity> tickets;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER,
